@@ -1,9 +1,12 @@
 # Ex.No: 01A PLOT A TIME SERIES DATA
-###  Date: 
+###  Date: 22/04/2027
 
 # AIM:
 To Develop a python program to Plot a time series data (population/ market price of a commodity
 /temperature.
+## TOOLS USED:
+Dataset: DailyDelhiClimateTrain.csv
+Google Colab
 # ALGORITHM:
 1. Import the required packages like pandas and matplot
 2. Read the dataset using the pandas
