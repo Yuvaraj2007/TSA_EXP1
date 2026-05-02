@@ -1,11 +1,11 @@
-# Ex.No: 01A PLOT A TIME SERIES DATA
-###  Date: 22/04/2027
-
+### NAME : YUVARAJ M
+### REG NO : 212224040377
+###  DATE : 2/05/2027
 # AIM:
 To Develop a python program to Plot a time series data (population/ market price of a commodity
 /temperature.
 ## TOOLS USED:
-Dataset: DailyDelhiClimateTrain.csv
+Dataset: stockmarket
 Google Colab
 # ALGORITHM:
 1. Import the required packages like pandas and matplot
@@ -15,36 +15,23 @@ Google Colab
 5. Display the graph.
 # PROGRAM:
 ```
-PREM R
-212223240124
-
 from matplotlib import pyplot as plt
 import pandas as pd
 
-# Load dataset
-df = pd.read_csv("/content/DailyDelhiClimateTrain.csv")
+df = pd.read_excel("/content/dataset.xlsx")
 
-# View data
-print(df.head())
+df['Date'] = pd.to_datetime(df['Date'])
 
-# Convert 'date' column to datetime
-df['date'] = pd.to_datetime(df['date'])
+df = df.groupby('Date')['Open'].mean()
 
-# Check data types
-print(df.dtypes)
+df_resample = df.resample('D').interpolate()
 
-# Set date as index
-df.set_index('date', inplace=True)
+df_resample.plot(kind='line', label='Open Price')
 
-# Select one column (like passengers → here meantemp)
-df_resampled = df['meantemp'].resample('D').interpolate()
+plt.title('Time Series Analysis of Dataset')
+plt.xlabel('Date')
+plt.ylabel('Open Price')
 
-# Plot
-df_resampled.plot(kind='line', label='Mean Temperature', color='black')
-
-plt.title('Time Series Plot of Daily Mean Temperature')
-plt.xlabel('Day')
-plt.ylabel('Temperature')
 plt.legend()
 plt.grid(True)
 
@@ -53,18 +40,9 @@ plt.show()
 ```
 
 
-
-
-
-
-
-
-
-
 # OUTPUT:
 
-<img width="695" height="678" alt="image" src="https://github.com/user-attachments/assets/87f7d86b-5d59-4345-bff6-3ad1e9ed7ba7" />
-
+<img width="767" height="590" alt="image" src="https://github.com/user-attachments/assets/d2f35c4a-3df4-4852-ace9-edb0ccf2505f" />
 
 
 
